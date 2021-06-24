@@ -6,6 +6,8 @@ A platform where all your social media stays right on your computer where you co
 
 No subjective community standards, no arbitrary 'fact checking', no blocking or deletion of content, no central 'authority' molding public opinion along their socio-political lines. Users are free to see whatever they want, from whomever they want and they are free to ignore whatever they want. 
 
+By its design it’s impossible for anyone to censor you, serve ads or see your Qaoss timeline without your permission. Everyone runs their own social media timeline on their computer and we connect directly to one another.
+
 Qaoss is an Open Source project built out of the passion for individual freedom and dignity. It's not meant to be a replacement for centralized social media but to complement it, one of many alternatives. 
 
 Qaoss Project Site
