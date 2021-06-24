@@ -17,6 +17,7 @@ logs
 results
 build
 install
+config
 
 node_modules
 archives
@@ -25,3 +26,4 @@ content.json
 messagequeue.json
 messages.json
 peers.json
+config.json
