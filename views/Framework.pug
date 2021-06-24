@@ -1,0 +1,130 @@
+extends FrameworkLayout
+
+block content
+    title #{alias}
+    header
+        .container-fluid
+            .row.flex
+                .col-sm-3.vertical-align-middle
+                    a(href="/" id='home') 
+                        img(src='/images/qaoss.png')
+                .col-sm-6.text-middle.vertical-align-middle
+                    |
+                .col-sm-3
+    .container-fluid
+        .row
+            aside(id='left' class='col-sm-2')
+                .grid-container-home.grid-container
+                    .header
+                        i.fas.fa-home
+                        a(href="/" id='home') 
+                            | Home
+                    .content-home
+                        ul
+                            li
+                                a(href="/" id='home')
+                                    | #{alias}
+                                span
+                                    |  (#{url})
+
+                .grid-container-friends.grid-container
+                    .header
+                        i.fas.fa-user
+                        | Friends
+                    .content-friends
+                        ul#friends-list
+                            each peer, index in peers
+                                if peer.group == "undefined"
+                                    li(id='friends-list-item' + index)
+                                        a(href=peer.url + "/remote/?alias=" + peer.alias + "&origin=" + request + "&request=" + peer.xurl + "&authToken=" + peer.authToken + "&accessToken=" + peer.accessToken alias=peer.alias remote=peer.url group='0' id='peer' + index)
+                                            | #{peer.alias}
+                                        span
+                                            | (#{peer.xurl})
+                                        if peer.alias != "No Friends"
+                                            span.context-menu-three(id="context-menu-" + index value='{"peer":"' + peer.xurl + '","alias":"' + peer.alias + '","group":"0","index":"' + index + '","request":"' + request + '","authToken":"' + peer.authToken  + '","accessToken":"' + peer.accessToken + '"}' title="Manage Friend")
+                                                i.fas.fa-ellipsis-h
+                                            span.message-form(id="message-form" + index style="display:none" title="Create Message")
+                                                div.grid-container-dialog
+                                                  div
+                                                    textarea.textarea-create-post(data-autoresize rows='1' style="border: none" name="message-body"+index id="message-body"+index)
+                
+                .grid-container-groups.grid-container
+                    .header
+                        i.fas.fa-users
+                        | Groups
+                    .content-groups
+                        ul#groups-list
+                            each peer, index in peers
+                                if peer.group == "on"
+                                    li(id='groups-list-item' + index)
+                                        a(href=peer.url + "/remote/?alias=" + peer.alias + "&origin=" + request + "&request=" + peer.xurl + "&authToken=" + peer.authToken + "&accessToken=" + peer.accessToken remote=peer.url group='1' id='peer' + index)
+                                            | #{peer.alias}
+                                        span
+                                            | (#{peer.xurl})
+                                        if peer.alias != "No Friends"
+                                            span.context-menu-three(id="context-menu-" + index value='{"peer":"' + peer.xurl + '","alias":"' + peer.alias + '","group":"1","index":"' + index + '","request":"' + request + '","authToken":"' + peer.authToken  + '","accessToken":"' + peer.accessToken + '"}' title="Manage Group")
+                                                i.fas.fa-ellipsis-h
+                                            span.message-form(id="message-form" + index style="display:none" title="Create Message")
+                                                div.grid-container-dialog
+                                                  div
+                                                    textarea.textarea-create-post(data-autoresize rows='1' style="border: none" name="message-body"+index id="message-body"+index)
+      
+            main(id='middle' class='col-sm-7 middle')
+                div(id='content' origin=url group=group class='contents') 
+                   
+            aside(id='right' class='col-sm-2')
+                .grid-container-support.grid-container
+                    .header
+                        i.fas.fa-user-cog
+                        | Administrative
+                    .content-admin
+                        ul
+                            li
+                                    div#profile
+                                        a(href="") 
+                                            i.fas.fa-suitcase
+                                            span#profile-label Manage Profile
+                                            
+                            li
+                                    div#add-friend
+                                        a(href="")
+                                            i.fas.fa-user-plus
+                                            span#new-friend-label Add Friends
+
+                                                   
+                            li
+                                a(href="http://qaoss.info" id="support" target="_blank") 
+                                    i.fas.fa-question-circle
+                                    | Qaoss Support
+                .grid-container-settings.grid-container
+                    .header
+                        i.fas.fa-envelope-open
+                        | Messages
+                    .content-settings
+                        ul
+                            div#new
+                                li
+                                    a(href="")
+                                        i.fas.fa-envelope 
+                                        span#new-label New
+                            
+                            div#read
+                                li
+                                    a(href="") 
+                                        i.fas.fa-envelope-open
+                                        | Read
+                .grid-container-settings.grid-container
+                    .header
+                        i.fas.fa-bell
+                        | Friend Requests
+                    .content-settings
+                        ul
+                            div#requests
+                                li
+                                    a(href="")
+                                        i.fas.fa-user-friends
+                                        span#request-count
+                                    
+     
+               
+                div.progress

@@ -1,0 +1,73 @@
+.url{
+    color:brown;
+}
+
+.Content-Wrapper{
+
+	margin-bottom: 150px;
+
+
+}
+#content {
+    width: 100%;
+	max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+.middle {
+    width: 50%;
+    height: 100vh;
+    overflow:hidden;
+	overflow-y: auto;
+}
+
+.middle:hover {
+	
+}
+
+.peer {
+    font: italic small-caps Georgia, serif;
+    font-size: large;
+    color: $red !important;
+    cursor: pointer;
+}
+
+#delete-peer {
+    display: none;
+}
+
+.peer-url {
+	color: brown;
+}
+
+#new {
+	max-height: 30em;
+	overflow-y: auto;
+	margin-bottom: 1em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid black;
+}
+
+.sender {
+	color: $black;
+}
+
+.new-message{
+	color: $blue;
+}
+
+.read-message {
+	color: $red;
+}
+
+#read {
+	max-height: 30em;
+	overflow-y: auto;
+	i{
+		color: $red;
+	}
+	
+	
+}

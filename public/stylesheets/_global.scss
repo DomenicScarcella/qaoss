@@ -1,0 +1,208 @@
+// main: main.scss
+/*
+ * Global
+ */
+html {
+	font-size: $browser-context;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: none;
+}
+
+::-moz-selection {
+    background: $light-blue;
+    text-shadow: none;
+}
+
+::selection {
+    background: $light-blue;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+body {
+	background-color: $soft-grey;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow:hidden;
+	color: $black;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: $light-grey $light-grey;
+}
+
+*::-webkit-scrollbar {
+	width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+	background: $grey;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $dark-grey;
+    border-radius: 2%;
+    border: 3px solid $grey;
+    min-height: 500px;
+}
+
+a {
+  outline: none !important;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 300;
+}
+
+h1 {
+    font-size: 1.2em;
+    margin: .6em 0;
+}
+
+p {
+    color: $black;
+    font-family: serif;
+    font-size: 20px;
+}
+
+label, input {
+    display: block;
+}
+
+input {
+    &[type=text] {
+        border: 2px solid $white;
+        padding: 12px 20px;
+        border-radius: 1.5em;
+        background-color: ghostwhite;
+        margin: .5em;
+        resize: none;
+
+        &:hover {
+            background-color: $white-smoke;
+            cursor: pointer;
+        }
+
+        &:focus {
+            background-color: $white-smoke;
+        }
+    }
+
+    &.text {
+        margin-bottom: 12px;
+        width: 95%;
+        padding: .4em;
+    }
+}
+
+preview {
+    color: $black;
+    font-family: serif;
+    font-size: 15px;
+}
+
+a {
+	text-decoration: none;
+	color: $blue;
+	transition: opacity .3s ease-in-out;
+	&:hover {
+		
+	}
+}
+
+.post-input{
+    border: none;
+    resize: none;
+}
+
+.post-button{
+	width: inherit;
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.invisible {
+  visibility: hidden;
+}
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.hidden {
+  display: none !important;
+}
+.affix {
+  position: fixed;
+}
+.text-center {
+	text-align: center;
+}
+.flex {
+  display: flex;
+}
+.vertical-align-middle {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+	img {
+		align-self: start;
+	}
+}

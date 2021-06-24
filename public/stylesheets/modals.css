@@ -1,0 +1,102 @@
+﻿body {
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.modal {
+    position: relative; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 550px;
+    top: 100px;
+    width: 35%; /* Full width */
+    height: 100%; /* Full height */
+   
+    overflow: auto; /* Enable scroll if needed */
+}
+
+input[type=text] {
+    border: 2px solid white;
+    padding: 12px 20px;
+    border-radius: 1.5em;
+    background-color: ghostwhite;
+    resize: none;
+}
+
+    input[type=text]:hover {
+        background-color: whitesmoke;
+    }
+
+/* Modal Header */
+.modal-header {
+    padding: 2px 16px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin: 4px;
+    border-bottom: 1px solid black;
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 2px 16px;
+    
+}
+
+.ok-button:hover{
+
+}
+
+.photo-upload {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    background:url("/images/photo.png");
+}
+
+.photo-upload input[type="file"] {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    font-size: 100px;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    overflow: hidden;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    border-radius: 7px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
