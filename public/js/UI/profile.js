@@ -1,4 +1,4 @@
-//Form for adding a new friend
+//Form for modifying profile
 $(document).ready(function () {
     $('#profile').on('click', function (event) {
 
@@ -8,8 +8,12 @@ $(document).ready(function () {
         var child = document.getElementById('grid-container-profile-admin');
         var contains = document.getElementById('profile').contains(child);
 
+        var group = $('#content').attr('group');
+        var alias = $('#content').attr('alias');
+
         if (!contains) {
-            $('#profile').append(htmlProfileForm()); //grid-container-new-friend
+            $('#profile').append(htmlProfileForm(alias)); //grid-container-new-friend
+            
         } else if (source.id == 'profile-label') {
             $('#grid-container-profile-admin').remove();
         } 

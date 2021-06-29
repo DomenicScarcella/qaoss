@@ -260,13 +260,13 @@ function htmlModifyFriendToolTip() {
     return "<p>Modify the Alias or Domain name.</p></span >" +
         "<p>Check the group checkbox if the friend you are modifying has a group timeline.</p>";
 }
-function htmlProfileForm() {
+function htmlProfileForm(alias) {
     return "<div id=grid-container-profile-admin></br>" +
         '<form method=POST enctype="multipart/form-data" action=/profile id=ProfileForm>' +
             '<label for="ProfileFile">Profile Picture:</label>' +
             '<input type=file name=Profile class=form-control id=ProfileFile accept=image/* onclick=event.stopPropagation() /></br>' +
             '<label for=ProfileAlias>Alias</label>' +
-            '<input type=text class=profile-alias name=ProfileAlias id=ProfileAlias  /></br >' +
+            '<input type=text class=profile-alias name=ProfileAlias id=ProfileAlias value="' + alias + '" /></br >' +
             '<label for=ProfileGroup>Group Timeline</label>' +
             '<input type=checkbox name=ProfileGroup id=ProfileGroup onclick=event.stopPropagation() /></br>' +
             '<input type=submit value=Update id=ProfileSubmit onclick=event.stopPropagation() />' +

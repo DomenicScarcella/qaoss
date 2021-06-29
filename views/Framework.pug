@@ -7,7 +7,7 @@ block content
         .container-fluid
             .row.flex
                 .col-sm-3.vertical-align-middle
-                    a(href="/" id='home') 
+                    span.qaoss#qaoss
                         img(src='/images/qaoss.png')
                 .col-sm-6.text-middle.vertical-align-middle
                     |
@@ -17,13 +17,13 @@ block content
             aside(id='left' class='col-sm-2')
                 .grid-container-home.grid-container
                     .header
-                        i.fas.fa-home
-                        a(href="/" id='home') 
+                        span.qaoss#home
+                            i.fas.fa-home
                             | Home
                     .content-home
                         ul
                             li
-                                a(href="/" id='home')
+                                span.qaoss#me
                                     | #{alias}
                                 span
                                     |  (#{url})
@@ -71,7 +71,7 @@ block content
                                                     textarea.textarea-create-post(data-autoresize rows='1' style="border: none" name="message-body"+index id="message-body"+index)
       
             main(id='middle' class='col-sm-7 middle')
-                div(id='content' origin=url group=group class='contents') 
+                div(id='content' origin=url alias=alias group=group class='contents') 
                    
             aside(id='right' class='col-sm-2')
                 .grid-container-support.grid-container

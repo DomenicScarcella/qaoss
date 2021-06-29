@@ -60,16 +60,14 @@ router.post('/', qauth.QAuthMiddleware, upload.any("Profile"), function (req, re
     let config = fs.readFileSync(process.cwd() + '/config/config.json', 'utf8');        
     let JSONConfig = JSON.parse(config);
         
-    
-   
     if (req.body.ProfileAlias != '')
         JSONConfig.alias = req.body.ProfileAlias;
     if (typeof req.body.ProfileGroup === 'undefined') {
-        JSONConfig.group = 0;
+        JSONConfig.group = "0";
        
     }
     else if (req.body.ProfileGroup == 'on') {
-        JSONConfig.group = 1;
+        JSONConfig.group = "1";
         
     }
 
