@@ -8,28 +8,24 @@
 **/
 
 function sendQueuedMessages() {
-    //Check the unsent message queue
-             
-    $.get("/messages/queued", function (result) {
 
+    //Check the unsent message queue
+    $.get("/messages/queued", function (result) {
+        
         //Send the messages if any
         //alert(result.messages[1].body)
         if (result != '') {
             var body, request;
             var img = document.body.appendChild(document.createElement("img"));
             var origin = $('#content').attr('origin');
-
+            
             for (var i = 0; i < result.messages.length; i++) {
                 //Check remote server availability
                 request = result.messages[i].xurl;
                 body = result.messages[i].body;
                 name = result.messages[i].name;
 
-                //Local requests don't need authentication
-                if (typeof data === 'undefined') {
-                    data = { authToken: null, accessToken: null };
-                }
-
+                
                 //try to send the queued messages
                 $.post('https://' + request + '.ngrok.io/messages/body/' + encodeURIComponent(body) + '/request/' + encodeURIComponent(origin), data, function (result) {
                     if (result.status == 200)
@@ -82,6 +78,7 @@ $(document).ready(function () {
 
 });
 
+//Read old messages
 $(document).ready(function () {
     $('[id = "read"]').on('click', function (event) {
         event.preventDefault();

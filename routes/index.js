@@ -18,7 +18,7 @@ const qauth = require('../public/js/func/qauth');
 
 
 /* GET local request. */
-router.get('/local', function (req, res) {
+router.get('/local', qauth.QAuthMiddleware, function (req, res) {
     
     //Integrity checks
     //In case the archives or shares folder got deleted
@@ -58,7 +58,7 @@ router.get('/remote', qauth.QAuthMiddleware, function (req, res) {
 });
 
 /* Load the client framework */
-router.get('/', function (req, res) {
+router.get('/', qauth.QAuthMiddleware, function (req, res) {
 
     //Load the main framework
     core.loadMain(res);

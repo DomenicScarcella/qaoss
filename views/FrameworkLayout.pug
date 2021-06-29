@@ -6,15 +6,40 @@ html
   <meta name="robots" content="noindex, nofollow">
   link(rel='stylesheet', href='/stylesheets/main.css')
 
-  <!-- Libraries -->
-  <link href="/fontawesome/css/all.css" rel="stylesheet"> <!--load all styles -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Stylesheets -->
+  <link  rel="stylesheet" href="/fontawesome/css/all.css"> <!--load all styles -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
+
+  <!-- JQuery Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <!--<script src="https://kit.fontawesome.com/a7f2393e3e.js" crossorigin="anonymous"></script>-->
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ 
+    <!-- Application Specific Modules -->
+
+    <!-- UI modules -->
+    script(src="/js/UI/request.js")
+    script(src="/js/UI/local.js")
+    script(src="/js/UI/post.js")
+    script(src="/js/UI/messages.js")
+    script(src="/js/UI/profile.js")
+    script(src="/js/UI/likes.js")
+    script(src="/js/UI/share.js")
+    script(src="/js/UI/comments.js")
+    script(src="/js/UI/peers.js")
+  
+    <!-- functional modules -->
+    script(src="/js/func/debounce.js")
+    script(src="/js/func/feed.js")  
+    script(src="/js/func/xss.js")  
+    script(src="/js/func/htmlTemplates.js")
+    script(src="/js/func/sanitation.js")
+
+    <!-- Application Specific Modules -->
+  
+  <!-- Application Specific Variables -->
 
   script.
     
@@ -26,6 +51,7 @@ html
 
     //JSON peers list
     var peers = #{peers}
+    
 
     //the port the app is running on from config.json
     var port = #{port}
@@ -33,34 +59,17 @@ html
     //ngrok url of the requestor
     var request = #{request}
 
-    //Group?
+    //Group status
     var group = #{group}
 
-    //qauth tokens
-    var authToken;
-    var accessToken;
+    //qauth object
     var data;
 
-  <!-- UI Modules -->
-  script(src="/js/UI/request.js")
-  script(src="/js/UI/local.js")
-  script(src="/js/UI/post.js")
-  script(src="/js/UI/messages.js")
-  script(src="/js/UI/profile.js")
-  script(src="/js/UI/options.js")
-  script(src="/js/UI/peers.js")
+   <!-- Application Specific Variables -->
 
-  <!-- functional modules -->
-  script(src="/js/func/debounce.js")
-  script(src="/js/func/feed.js")  
-  script(src="/js/func/xss.js")  
-  script(src="/js/func/htmlTemplates.js")
-  script(src="/js/func/sanitation.js")
-  
-  <!-- Run this before anything else to get it out of the way -->
   script.
     sendQueuedMessages()
-
+       
       
  body
   block content

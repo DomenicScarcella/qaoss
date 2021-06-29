@@ -292,7 +292,7 @@ router.post('/body/:body/request/:request', qauth.QAuthMiddleware, maxLengthMidd
 });
 
 router.post('/body/:body/recipient/:recipient', qauth.QAuthMiddleware, maxLengthMiddleware, function (req, res, next) {
-
+    
     //Queue a new message
     //Decode the url parameters
     var body = util.decodeParam(req.params.body);
@@ -305,7 +305,7 @@ router.post('/body/:body/recipient/:recipient', qauth.QAuthMiddleware, maxLength
 
     if (fs.existsSync('messages\\queue\\' + date)) {
         try {
-            fs.writeFileSync('messages\\queue\\' + date + '\\content-' + seconds + '.json', util.serializeContent(body, url, '\"read\":\"0\"', "photo_" + date, seconds, req.params.recipient, "Create"), 'utf8');
+            fs.writeFileSync('messages\\queue\\' + date + '\\content-' + seconds + '.json', util.serializeContent(body, url, '\"read\":\"0\"',"", seconds, req.params.recipient, "Create"), 'utf8');
         } catch (e) {
             util.writeLog("error", e);
 

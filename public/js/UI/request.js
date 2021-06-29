@@ -12,19 +12,19 @@ $(document).ready(function () {
        
         if(event != undefined)
             event.preventDefault();
-
-        var url = this.getAttribute('href');
-        var peer = this.getAttribute('id');
-        var alias = this.getAttribute('alias');
-        var remote = this.getAttribute('remote');
-
-        var i = url.toString().indexOf('?');
-        var querystring=url.toString().substr(i);
-        var urlParams = new URLSearchParams(querystring);
+        
+        let url = this.getAttribute('href');
+        let peer = this.getAttribute('id');
+        let alias = this.getAttribute('alias');
+        let remote = this.getAttribute('remote');
+       
+        let i = url.toString().indexOf('?');
+        let querystring=url.toString().substr(i);
+        let urlParams = new URLSearchParams(querystring);
 
         //qauth tokens
-        authToken = urlParams.get('authToken');
-        accessToken = urlParams.get('accessToken');
+        let authToken = urlParams.get('authToken');
+        let accessToken = urlParams.get('accessToken');
 
         //Set the authentication data payload for all remote posts, comments, likes, edits and delete requests after the initial get.
         //The initial Get already has the tokens in the url.
@@ -33,7 +33,7 @@ $(document).ready(function () {
         data = { authToken: authToken, accessToken: accessToken };
 
         //Check remote server availability
-        var img = document.body.appendChild(document.createElement("img"));
+        let img = document.body.appendChild(document.createElement("img"));
         img.src = remote + '/images/profile.jpg';
         
         img.onerror = function () {

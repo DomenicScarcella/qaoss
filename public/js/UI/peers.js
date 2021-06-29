@@ -191,7 +191,7 @@ var Peer = (function () {
                                            
                                             img.onerror = function () {
                                                 alert(peer + ' is currently offline. Your message will be sent when ' + peer + ' is online.');
-                                                $.post('/messages/body/' + body + '/recipient/' + peer, function (result) {
+                                                $.post('/messages/body/' + body + '/recipient/' + peer, data, function (result) {
 
                                                 });
                                             };

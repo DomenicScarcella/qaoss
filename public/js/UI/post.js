@@ -443,7 +443,7 @@ $(function () {
                         $.get("/post/content/" + post + "/request/" + origin + "/authToken/null/accessToken/null", function (content) {
 
                             url = "/post/post/" + post;
-
+                            
                             doEditDialog("dialog-form" + target, target, content, url, origin, request);
                         });
                     } else {
@@ -506,5 +506,20 @@ $(function () {
                 }
             }
         }
+    });
+});
+
+//Automatically resize text areas
+$(document).ready(function () {
+    $(document).on('click keypress', 'textarea', function (event) {
+        document.querySelectorAll('[data-autoresize]').forEach(function (element) {
+            element.style.boxSizing = 'border-box';
+            var offset = element.offsetHeight - element.clientHeight;
+            element.addEventListener('input', function (event) {
+                event.target.style.height = 'auto';
+                event.target.style.height = event.target.scrollHeight + offset + 'px';
+            });
+            element.removeAttribute('data-autoresize');
+        });
     });
 });

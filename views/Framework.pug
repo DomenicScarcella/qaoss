@@ -1,6 +1,7 @@
 extends FrameworkLayout
 
 block content
+
     title #{alias}
     header
         .container-fluid
@@ -57,7 +58,7 @@ block content
                             each peer, index in peers
                                 if peer.group == "on"
                                     li(id='groups-list-item' + index)
-                                        a(href=peer.url + "/remote/?alias=" + peer.alias + "&origin=" + request + "&request=" + peer.xurl + "&authToken=" + peer.authToken + "&accessToken=" + peer.accessToken remote=peer.url group='1' id='peer' + index)
+                                        a(href=peer.url + "/remote/?alias=" + peer.alias + "&origin=" + request + "&request=" + peer.xurl + "&authToken=" + peer.authToken + "&accessToken=" + peer.accessToken alias=peer.alias remote=peer.url group='1' id='peer' + index)
                                             | #{peer.alias}
                                         span
                                             | (#{peer.xurl})
@@ -96,6 +97,11 @@ block content
                                 a(href="http://qaoss.info" id="support" target="_blank") 
                                     i.fas.fa-question-circle
                                     | Qaoss Support
+                            li
+                                a(href="")
+                                    i.fas.fa-cogs
+                                    | Diagnostics
+                                
                 .grid-container-settings.grid-container
                     .header
                         i.fas.fa-envelope-open
@@ -124,7 +130,5 @@ block content
                                     a(href="")
                                         i.fas.fa-user-friends
                                         span#request-count
-                                    
-     
                
                 div.progress

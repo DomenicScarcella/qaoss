@@ -299,13 +299,14 @@ router.post('/body/:body/url/:url/request/:request/authToken/:authToken/accessTo
 
 //Get the content for the edit dialog box
 router.get('/content/:content/request/:request/authToken/:authToken/accessToken/:accessToken', qauth.QAuthMiddleware, function (req, res) {
-
+    
     let contentJson = util.getContentIndex();
     var content = util.findFile(contentJson, req.params.content);
 
 
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
+    
     res.json(content);
 
 });

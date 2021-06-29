@@ -1,79 +1,3 @@
-/**
-         * All Things Optional (Like, Comment, Reply, Share)
-         * 
-         *
-         * @author Don Cooper<qaoss@yahoo.com>
-         *
-**/
-
-
-    //Like a post
-    $(document).ready(function () {
-        $('[id = "content"]').on('click', '[id ^= "like"]', function (event) {
-            event.preventDefault();
-
-            //Get the endpoint to the post to like
-            var content = this.getAttribute('value');
-            var contentJson = JSON.parse(content);
-
-            var request = contentJson.url;
-            var origin = $('#content').attr('origin');
-
-            //Get the id of the like button pressed
-            var id = $(this).attr('id');
-            var url = "";
-
-            //Get the id of the like indicator to update
-            var target = id.replace('like', 'like-count');
-            var image = id.replace('like', 'img');
-
-            if (origin == request)
-                url = "/likes/post/" + contentJson.content + "/alias/" + contentJson.alias + "/request/" + contentJson.request;
-            else
-                url = "https://" + request + ".ngrok.io/likes/post/" + contentJson.content + "/alias/" + contentJson.alias + "/request/" + origin;
-
-            //Local requests don't need authentication
-            if (typeof data === 'undefined') {
-                data = { authToken: null, accessToken: null };
-            }
-
-            $.post(url, data, function (result) {
-                
-                if (result.result == -1)
-                    alert("You are not a registered friend.");
-                else {
-                    //Update the like indicator asynchronously
-                    $('#' + target).html(result.likes);
-                    if (result.crement == 0)
-                        $('#' + image).attr("src", "/images/likes.png");
-                    else
-                        $('#' + image).attr("src", "/images/liked0.png");
-                }
-
-            });
-
-
-        });
-    });
-
-//Share a post
-$(document).ready(function () {
-    $('[id = "content"]').on('click', '[id ^= "share"]', function (event) {
-        event.preventDefault();
-        
-        var contentJSON = JSON.parse($(this).attr('value'));
-        
-        var request = contentJSON.request;
-        var content = contentJSON.content;
-        var origin = $('#content').attr('origin');
-        
-        var url = 'https://' + request + '.ngrok.io/share/content/' + content + '/request/' + origin;
-        var result = window.open(url, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
-
-
-    });
-});
-
 //COMMENT REPLIES
 //Create a comment input for replying to a comment
 $(document).ready(function () {
@@ -88,20 +12,20 @@ $(document).ready(function () {
         var request = commentJson.request;
         var commentContainerIndex = this.getAttribute('id').replace('reply', '');
 
-        
-       // if (JSON.parse($('#like0').attr('value')).url != undefined)
+
+        // if (JSON.parse($('#like0').attr('value')).url != undefined)
         //    request = JSON.parse($('#like0').attr('value')).url;
         //else
         //    request = JSON.parse($('#like0').attr('value')).localURL;
 
         var id = $(this).attr('id');
-      
+
         var parentComment = id.replace('reply', 'grid-container-comment');
         var commentInput = "<div id='comment-reply-field" + commentContainerIndex + "'>" +
-                "<textarea class='textarea-reply-comment' data-autoresize rows='1' onkeypress=\"submitCommentReply(this.id, this.value,'" + content + "','" + index + "','" + request + "','" + commentContainerIndex + "')\" id='comment-field" + index + "' size='92'></textarea>" +
-                "</div>"
-        
-        
+            "<textarea class='textarea-reply-comment' data-autoresize rows='1' onkeypress=\"submitCommentReply(this.id, this.value,'" + content + "','" + index + "','" + request + "','" + commentContainerIndex + "')\" id='comment-field" + index + "' size='92'></textarea>" +
+            "</div>"
+
+
         $('#' + parentComment).append(commentInput);
 
 
@@ -115,16 +39,16 @@ function submitCommentReply(id, value, content, index, request, comment) {
     var elem = document.getElementById(id);
     var origin = $('#content').attr('origin');
     var url = "";
-   
+
     elem.onkeyup = function (e) {
-        
+
         if (e.keyCode == 13 && !e.shiftKey) {
             e.preventDefault();
-            
+
             //Validate and sanitize data before sending to server.
 
             if (origin == request) {
-                
+
                 url = "/comments/reply/" + content + "/comment/" + encodeURIComponent(value) + "/index/" + index + "/request/" + encodeURIComponent(origin);
             } else {
                 url = "https://" + request + ".ngrok.io/comments/reply/" + content + "/comment/" + encodeURIComponent(value) + "/index/" + index + "/request/" + encodeURIComponent(origin);
@@ -145,34 +69,34 @@ function submitCommentReply(id, value, content, index, request, comment) {
                     var reply = result.reply;
                     var replyIndex = result.index;
                     var commentIndex = result.comment;
-                    
+
                     //Append replies to the comment container the users replied to
                     $("#grid-container-comment" + comment).append(
 
                         "<div class='grid-container-reply' id='grid-container-reply" + comment + count + "'>" +
-                            "<div style='display:none' id='comment-edit-reply" + comment + count + "'>" +
-                                "<textarea class='textarea-edit-comment' data-autoresize rows='1' onkeypress=\"submitCommentReplyEdit(this.id, this.value,'" + name + "','" + index + "','" + replyIndex + "','" + request + "')\" id='comment-text-reply" + comment + count + "'></textarea>" +
-                            "</div>" +
-                            "<div id='comment-display-reply" + comment + count + "'>" +
-                                "<div id='comment-user-reply" + comment + count + "'>" + xurl + "</div><br>" +
-                                "<div id='comment-content-reply" + comment + count + "'>" + reply + "</div>" +
+                        "<div style='display:none' id='comment-edit-reply" + comment + count + "'>" +
+                        "<textarea class='textarea-edit-comment' data-autoresize rows='1' onkeypress=\"submitCommentReplyEdit(this.id, this.value,'" + name + "','" + index + "','" + replyIndex + "','" + request + "')\" id='comment-text-reply" + comment + count + "'></textarea>" +
                         "</div>" +
-                        "<div id='reply-edit" + comment + count +"'>" +
-                                "<span class='context-menu-four' id='context-menu-four" + comment + "' value='{\"content\":\"" + name + "\",\"id\":\"" + comment + count + "\",\"commentIndex\":\"" + commentIndex + "\",\"replyIndex\":\"" + replyIndex + "\",\"localURL\":\"" + request + "\",\"user\":\"" + xurl + "\"}'><i class='fas fa-ellipsis-h fa-xs'></i></span>" +
-                            "</div>" +
+                        "<div id='comment-display-reply" + comment + count + "'>" +
+                        "<div id='comment-user-reply" + comment + count + "'>" + xurl + "</div><br>" +
+                        "<div id='comment-content-reply" + comment + count + "'>" + reply + "</div>" +
+                        "</div>" +
+                        "<div id='reply-edit" + comment + count + "'>" +
+                        "<span class='context-menu-four' id='context-menu-four" + comment + "' value='{\"content\":\"" + name + "\",\"id\":\"" + comment + count + "\",\"commentIndex\":\"" + commentIndex + "\",\"replyIndex\":\"" + replyIndex + "\",\"localURL\":\"" + request + "\",\"user\":\"" + xurl + "\"}'><i class='fas fa-ellipsis-h fa-xs'></i></span>" +
+                        "</div>" +
                         "<div id='reply-icon" + comment + count + "'>" +
-                                "<span class='reply-reply' id = 'reply" + comment + "' value = '{\"content\":\"" + name + "\",\"index\":\"" + commentIndex + "\",\"request\":\"" + request + "\",\"url\":\"" + request + "\"}'><a href='#'><i class='fas fa-reply'></i></a></span>" +
-                            "</div>" +
-                            "<div></div>" +
+                        "<span class='reply-reply' id = 'reply" + comment + "' value = '{\"content\":\"" + name + "\",\"index\":\"" + commentIndex + "\",\"request\":\"" + request + "\",\"url\":\"" + request + "\"}'><a href='#'><i class='fas fa-reply'></i></a></span>" +
+                        "</div>" +
+                        "<div></div>" +
 
                         "</div>"
-                        
+
                     );
 
                     //The comment grid is two columns so we need to add an item after the reply for the second column and
                     //give it an ID so we can delete it if the user deletes the reply.
                     $("#grid-container-comment" + comment).append(
-                        "<div id='comment-grid-spacer" + commentIndex +replyIndex + "' ></div>"
+                        "<div id='comment-grid-spacer" + commentIndex + replyIndex + "' ></div>"
                     );
 
                     //Remove the textarea used to enter the reply
@@ -210,7 +134,7 @@ function submitCommentReplyEdit(id, value, content, commentIndex, replyIndex, re
     var url = "";
 
     elem.onkeyup = function (e) {
-        
+
         if (e.keyCode == 13 && !e.shiftKey) {
             e.preventDefault();
 
@@ -281,12 +205,12 @@ $(function () {
                     if (r == true) {
 
                         var url = "";
-                        
+
                         //Url to delete the comment
                         if (origin == request)
                             url = "/comments/post/" + post + "/commentindex/" + commentIndex + "/replyindex/" + replyIndex + "/id/" + id + "/request/" + origin;
                         else
-                        url = "https://" + request + ".ngrok.io/comments/post/" + post + "/commentindex/" + commentIndex + "/replyindex/" + replyIndex + "/id/" + id + "/request/" + origin;
+                            url = "https://" + request + ".ngrok.io/comments/post/" + post + "/commentindex/" + commentIndex + "/replyindex/" + replyIndex + "/id/" + id + "/request/" + origin;
 
                         //Local requests don't need authentication
                         if (typeof data === 'undefined') {
@@ -307,7 +231,7 @@ $(function () {
 
                         });
 
-                       
+
                     }
 
 
@@ -326,7 +250,7 @@ $(function () {
             }
         }
     });
-}); 
+});
 
 // COMMENTS
 //Give the comment field focus on pressing the comment button
@@ -346,75 +270,75 @@ $(document).ready(function () {
 
 //make a comment
 function submitComment(id, value, content, alias, request, count) {
-   
+
     var elem = document.getElementById(id);
     var index = id.replace('comment-field', '');
-    var origin = $('#content').attr('origin');   
+    var origin = $('#content').attr('origin');
     var url = "";
-    
-        elem.onkeyup = function (e) {
-            if (e.keyCode == 13 && !e.shiftKey) {
-                e.preventDefault();
 
-                //Validate and sanitize data before sending to server.
-                if (origin == request) {
-                    url = "/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/alias/" + encodeURIComponent(alias) + "/request/" + encodeURIComponent(origin);
+    elem.onkeyup = function (e) {
+        if (e.keyCode == 13 && !e.shiftKey) {
+            e.preventDefault();
+
+            //Validate and sanitize data before sending to server.
+            if (origin == request) {
+                url = "/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/alias/" + encodeURIComponent(alias) + "/request/" + encodeURIComponent(origin);
+            } else {
+                url = "https://" + request + ".ngrok.io/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/alias/" + encodeURIComponent(alias) + "/request/" + encodeURIComponent(origin);
+            }
+
+            //Local requests don't need authentication
+            if (typeof data === 'undefined') {
+                data = { authToken: null, accessToken: null };
+            }
+
+            $.post(url, data, function (result) {
+                if (result.result == -1) {
+                    alert("You are not a registered friend.");
                 } else {
-                    url = "https://" + request + ".ngrok.io/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/alias/" + encodeURIComponent(alias) + "/request/" + encodeURIComponent(origin);
-                }   
+                    var count = result.count;
+                    var name = result.name;
+                    var xurl = result.xurl;
+                    var comment = result.comment;
+                    var commentIndex = result.index;
 
-                //Local requests don't need authentication
-                if (typeof data === 'undefined') {
-                    data = { authToken: null, accessToken: null};
+                    $("#grid-container-comments" + index).append(
+                        "<div id='grid-container-comment" + index + count + "' class='grid-container-comment'>" +
+                        "<div id='comment" + index + count + "'>" +
+                        "<div style='display:none' id='comment-edit" + index + count + "'>" +
+                        "<textarea class='textarea-edit-comment' data-autoresize rows='1' onkeypress=\"submitCommentEdit(this.id, this.value,'" + name + "','" + commentIndex + "','" + request + "')\" id='comment-text" + index + count + "'></textarea>" +
+                        "</div>" +
+                        "<div id='comment-display" + index + count + "'>" +
+                        "<div id='comment-user" + index + count + "'>" + xurl + "</div><br>" +
+                        "<div id='comment-content" + index + count + "'>" + comment + "</div>" +
+                        "</div>" +
+
+                        "</div>" +
+                        "<div>" +
+                        "<span class='context-menu-two' id='context-menu-two" + index + "' value='{\"content\":\"" + name + "\",\"id\":\"" + index + count + "\",\"index\":\"" + commentIndex + "\",\"localURL\":\"" + request + "\",\"user\":\"" + xurl + "\"}'><i class='fas fa-ellipsis-h fa-xs'></i></span>" +
+                        "</div>" +
+                        "<div>" +
+                        "<span class='comment-reply' id = 'reply" + index + count + "' value = '{\"content\":\"" + name + "\",\"index\":\"" + commentIndex + "\",\"request\":\"" + request + "\",\"url\":\"" + request + "\"}'><a href='#'><i class='fas fa-reply'></i></a></span>" +
+                        "</div > " +
+                        "<div></div>" +
+                        "</div>"
+                    );
+
+                    $('#' + id).val("Write a comment...");
+                    $('#' + id).css("height", "auto");
+                    //location.reload();
                 }
 
-                $.post(url, data, function (result) {
-                    if (result.result == -1) {
-                        alert("You are not a registered friend.");
-                    }else {
-                        var count = result.count;    
-                        var name = result.name;
-                        var xurl = result.xurl;
-                        var comment = result.comment;
-                        var commentIndex = result.index;
-                        
-                        $("#grid-container-comments" + index).append(
-                            "<div id='grid-container-comment" + index + count + "' class='grid-container-comment'>" +
-                                "<div id='comment" + index + count + "'>" +
-                                    "<div style='display:none' id='comment-edit" + index + count + "'>" +
-                                        "<textarea class='textarea-edit-comment' data-autoresize rows='1' onkeypress=\"submitCommentEdit(this.id, this.value,'" + name + "','" + commentIndex + "','" + request + "')\" id='comment-text" + index + count + "'></textarea>" +
-                                    "</div>" +
-                                    "<div id='comment-display" + index + count + "'>" +
-                                        "<div id='comment-user" + index + count + "'>" + xurl + "</div><br>" +
-                                        "<div id='comment-content" + index + count + "'>" + comment + "</div>" +
-                                    "</div>" +
 
-                                "</div>" +
-                                "<div>" +
-                            "<span class='context-menu-two' id='context-menu-two" + index + "' value='{\"content\":\"" + name + "\",\"id\":\"" + index + count + "\",\"index\":\"" + commentIndex + "\",\"localURL\":\"" + request + "\",\"user\":\"" + xurl + "\"}'><i class='fas fa-ellipsis-h fa-xs'></i></span>" +
-                            "</div>" + 
-                            "<div>" +
-                            "<span class='comment-reply' id = 'reply" + index + count + "' value = '{\"content\":\"" + name + "\",\"index\":\"" + commentIndex + "\",\"request\":\"" + request + "\",\"url\":\"" + request + "\"}'><a href='#'><i class='fas fa-reply'></i></a></span>" +
-                            "</div > " +
-                            "<div></div>" +
-                            "</div>"
-                        );
+            });
 
-                        $('#' + id).val("Write a comment...");
-                        $('#' + id).css("height", "auto");
-                        //location.reload();
-                    }
-                    
-                    
-                });
-
-            }
         }
+    }
 }
 
 //edit a comment
 function submitCommentEdit(id, value, content, index, request) {
-   
+
     var elem = document.getElementById(id);
     var suffix = id.replace('comment-text', '');
     var origin = $('#content').attr('origin');
@@ -438,22 +362,22 @@ function submitCommentEdit(id, value, content, index, request) {
             }
 
             //alert(url);
-           $.post(url, data, function (result) {
-               
-               if (result.result == "success") {
-                   
-                   if ($("div#comment-edit" + suffix).is(":visible")) {
+            $.post(url, data, function (result) {
 
-                       $("div#comment-user" + suffix).text(result.user);
-                       $("div#comment-content" + suffix).text(result.comment);
-                       $("div#comment-display" + suffix).show();
-                       $("div#comment-edit" + suffix).hide();
+                if (result.result == "success") {
 
-                   } else {
-                       alert("There was a problem editing the comment");
-                       location.reload();
-                   }
-               }
+                    if ($("div#comment-edit" + suffix).is(":visible")) {
+
+                        $("div#comment-user" + suffix).text(result.user);
+                        $("div#comment-content" + suffix).text(result.comment);
+                        $("div#comment-display" + suffix).show();
+                        $("div#comment-edit" + suffix).hide();
+
+                    } else {
+                        alert("There was a problem editing the comment");
+                        location.reload();
+                    }
+                }
 
             });
 
@@ -532,7 +456,7 @@ $(function () {
                             }
 
                         });
-                        
+
                     }
 
 
@@ -552,19 +476,3 @@ $(function () {
         }
     });
 }); 
-
-
-//Automatically resize text areas
-$(document).ready(function () {
-    $(document).on('click keypress', 'textarea', function (event) {
-        document.querySelectorAll('[data-autoresize]').forEach(function (element) {
-            element.style.boxSizing = 'border-box';
-            var offset = element.offsetHeight - element.clientHeight;
-            element.addEventListener('input', function (event) {
-                event.target.style.height = 'auto';
-                event.target.style.height = event.target.scrollHeight + offset + 'px';
-            });
-            element.removeAttribute('data-autoresize');
-        });
-    });
-});

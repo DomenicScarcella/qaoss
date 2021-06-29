@@ -9,7 +9,8 @@
 $(window).bind("load", function () {
     
     event.preventDefault();
-
+    
+    //sendQueuedMessages();
     var origin = $('#content').attr('origin');
     var group = $('#content').attr('group');
     
