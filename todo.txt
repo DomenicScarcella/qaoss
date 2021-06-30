@@ -1,0 +1,11 @@
+Apple version
+Mobile version
+qauth for share and feed
+reposition the scroll thumb to keep it in the middle
+profile alias and group modifications
+queue friend requests 
+file locking
+end-to-end encryption
+xss implementation
+Diagnostics - delete empty folders, index integrity etc.
+Error handling
