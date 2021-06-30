@@ -9,12 +9,13 @@
 $(window).bind("load", function () {
     
     event.preventDefault();
+
     getLocal();
    
 });
 
 $(document).ready(function () {
-    $('[id="qaoss"],[id="home"],[id="alias"]').on('click', function (event) {
+    $('[id="qaoss"],[id="home"],[id="me"]').on('click', function (event) {
 
         event.preventDefault();
         getLocal();

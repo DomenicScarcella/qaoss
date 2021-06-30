@@ -24,7 +24,7 @@ function sendQueuedMessages() {
                 request = result.messages[i].xurl;
                 body = result.messages[i].body;
                 name = result.messages[i].name;
-
+                //Need to go get the tokens for each peer to send with the message.
                 
                 //try to send the queued messages
                 $.post('https://' + request + '.ngrok.io/messages/body/' + encodeURIComponent(body) + '/request/' + encodeURIComponent(origin), data, function (result) {
