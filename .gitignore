@@ -16,7 +16,6 @@ pids
 logs
 results
 build
-install
 config
 
 node_modules
