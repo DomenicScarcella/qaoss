@@ -37,6 +37,7 @@ function getLocal() {
         if (content.message == 1) {
             $('.fas.fa-envelope').css('color', 'green');
             $('#new-label').css('color', 'green');
+            $('#new-count').append(content.message);
         } else if (content.message == 0) {
             $('.fas.fa-envelope').css('color', 'blue');
             $('#new-label').css('color', 'blue');

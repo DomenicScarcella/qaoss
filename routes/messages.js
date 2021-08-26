@@ -11,7 +11,7 @@ var express = require('express');
 var router = express.Router();
 const fs = require('fs');
 const util = require('../public/js/func/utility.js');
-var MAX_CONTENT_LENGTH_ACCEPTED = 120;
+var MAX_CONTENT_LENGTH_ACCEPTED = 12000;
 
 //QAuth athentication middleware
 const qauth = require('../public/js/func/qauth');

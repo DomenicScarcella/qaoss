@@ -9,3 +9,4 @@ end-to-end encryption
 xss implementation
 Diagnostics - delete empty folders, index integrity etc.
 Error handling
+FB Embedding
