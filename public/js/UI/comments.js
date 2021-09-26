@@ -4,29 +4,27 @@ $(document).ready(function () {
     $('[id = "content"]').on('click', '[id ^= "reply"]', function (event) {
         event.preventDefault();
 
-        //Get the endpoint to the post to reply to
-        var comment = this.getAttribute('value');
-        var commentJson = JSON.parse(comment);
-        var content = commentJson.content;
-        var index = commentJson.index;
-        var request = commentJson.request;
         var commentContainerIndex = this.getAttribute('id').replace('reply', '');
+        var elem = document.getElementById('comment-reply-field' + commentContainerIndex);
 
+        if (elem == null) {
 
-        // if (JSON.parse($('#like0').attr('value')).url != undefined)
-        //    request = JSON.parse($('#like0').attr('value')).url;
-        //else
-        //    request = JSON.parse($('#like0').attr('value')).localURL;
+            //Get the endpoint to the post to reply to
+            var comment = this.getAttribute('value');
+            var commentJson = JSON.parse(comment);
+            var content = commentJson.content;
+            var index = commentJson.index;
+            var request = commentJson.request;
+            var id = $(this).attr('id');
+            var parentComment = id.replace('reply', 'grid-container-comment');
 
-        var id = $(this).attr('id');
+            //Create the reply input box
+            var commentInput = "<div id='comment-reply-field" + commentContainerIndex + "'>" +
+                "<textarea class='textarea-reply-comment' data-autoresize rows='1' onkeypress=\"submitCommentReply(this.id, this.value,'" + content + "','" + index + "','" + request + "','" + commentContainerIndex + "')\" id='comment-field" + index + "' size='92'></textarea>" +
+                "</div>"
 
-        var parentComment = id.replace('reply', 'grid-container-comment');
-        var commentInput = "<div id='comment-reply-field" + commentContainerIndex + "'>" +
-            "<textarea class='textarea-reply-comment' data-autoresize rows='1' onkeypress=\"submitCommentReply(this.id, this.value,'" + content + "','" + index + "','" + request + "','" + commentContainerIndex + "')\" id='comment-field" + index + "' size='92'></textarea>" +
-            "</div>"
-
-
-        $('#' + parentComment).append(commentInput);
+            $('#' + parentComment).append(commentInput);
+        }
 
 
     });

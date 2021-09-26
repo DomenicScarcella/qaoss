@@ -1,8 +1,8 @@
 Apple version
 Mobile version
+Multiple photo and file uploads
 qauth for share and feed
 reposition the scroll thumb to keep it in the middle
-profile alias and group modifications
 queue friend requests 
 file locking
 end-to-end encryption
