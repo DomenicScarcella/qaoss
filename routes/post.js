@@ -272,7 +272,7 @@ router.post('/body/:body/url/:url/request/:request/authToken/:authToken/accessTo
 
             res.setHeader('Content-Type', 'application/json');
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.json(JSON.parse('{\"result\":\"success\",\"status\":\"200\"}'));
+            res.json({result:"success",status:200});
 
         } else {
 
@@ -290,7 +290,7 @@ router.post('/body/:body/url/:url/request/:request/authToken/:authToken/accessTo
             
             res.setHeader('Content-Type', 'application/json');
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.json(JSON.parse('{\"result\":\"success\",\"status\":\"200\"}'));
+            res.json({ result: "success", status: 200 });
 
         }
 
@@ -387,11 +387,12 @@ router.post('/post/:post/body/:body/url/:url/request/:request/authToken/:authTok
 
             post = JSON.stringify(post);
             fs.writeFileSync("./archives/" + folder + "/" + req.params.post, post, 'utf8');
+            post = JSON.parse(post);
 
 
             res.setHeader('Content-Type', 'application/json');
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.json(JSON.parse('{\"result\":\"success\", \"content\":' + post + '}'));
+            res.json({result:"success", content: post });
 
         }
     }
@@ -428,7 +429,7 @@ router.delete('/photo/post/:post/request/:request/authToken/:authToken/accessTok
 
             res.setHeader('Content-Type', 'application/json');
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.json(JSON.parse('{\"result\":\"success\", \"content\":' + post + '}'));
+            res.json({ result: "success", content: post });
         }
     }
 
@@ -477,7 +478,7 @@ router.delete('/post/:post/request/:request/authToken/:authToken/accessToken/:ac
     }
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.json(JSON.parse('{\"result\":\"200\"}'));
+    res.json({result:200});
 
 });
 

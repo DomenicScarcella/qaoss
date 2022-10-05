@@ -95,6 +95,18 @@ router.post('/post/:post/comment/:comment/index/:index/request/:request', qauth.
                     post = JSON.stringify(post);
                     fs.writeFileSync("./archives/" + folder + "/" + req.params.post, post, 'utf8');
 
+                    //Build the response object
+                    var resObj = {
+
+                        "result": result,
+                        "comment": req.params.comment,
+                        "xurl": req.params.request,
+                        "count": count,
+                        "index": index,
+                        "name": name
+
+                    };
+
                     res.setHeader('Content-Type', 'application/json');
                     res.setHeader('Access-Control-Allow-Origin', '*');
                     res.json(JSON.parse('{\"result\":\"' + result + '\",\"user\":\"' + xurl + '\",\"comment\":' + comment + '}'));

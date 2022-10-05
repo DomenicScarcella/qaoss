@@ -24,7 +24,7 @@ module.exports = {
     },
 
     QAuthMiddleware: function (req, res, next) {
-        
+        console.log('base url: ' + req.baseUrl + ' path: ' + req.path);
         var isAuthorized = false;
         var baseUrl = req.baseUrl;
         var path = req.path;
