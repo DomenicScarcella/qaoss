@@ -42,7 +42,7 @@ router.get('/local', qauth.QAuthMiddleware, function (req, res) {
     //Load the local timeline from this function because javascript is asynchronous and we have to make sure
     //the shares get indexed before loading the page. 
     
-    util.getShares(res, config.alias, config.ngrok_url, config.ngrok_url, config.group);                     
+    util.getShares(res, config.alias, config.subdomain, config.subdomain, config.group);                     
     
 });
 
@@ -53,7 +53,7 @@ router.get('/remote', qauth.QAuthMiddleware, function (req, res) {
         //Update the content index if there are have been any shares
         //Load the local timeline from this function because javascript is asynchronous and we have to make sure
         //the shares get indexed before loading the page. 
-        util.getShares(res, req.query.alias, req.query.request, config.ngrok_url, config.group);
+        util.getShares(res, req.query.alias, req.query.request, config.subdomain, config.group);
     
 });
 

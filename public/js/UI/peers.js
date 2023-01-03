@@ -187,7 +187,7 @@ var Peer = (function () {
 
                                             //Check remote server availability
                                             var img = document.body.appendChild(document.createElement("img"));
-                                            img.src = 'https://' + peer + '.ngrok.io/images/profile.jpg';
+                                            img.src = 'https://' + peer + '.local.lt/images/profile.jpg';
                                            
                                             img.onerror = function () {
                                                 alert(peer + ' is currently offline. Your message will be sent when ' + peer + ' is online.');
@@ -200,7 +200,7 @@ var Peer = (function () {
                                                 alert("The body of the message cannot be empty");
                                             } else {
                                                 
-                                                $.post('https://' + peer + '.ngrok.io/messages/body/' + encodeURIComponent(body) + '/request/' + encodeURIComponent(request), data, function (result) {
+                                                $.post('https://' + peer + '.local.lt/messages/body/' + encodeURIComponent(body) + '/request/' + encodeURIComponent(request), data, function (result) {
                                                     if (result.status == 200)
                                                         alert("Message sent to: " + peer);
                                                     else
@@ -434,7 +434,7 @@ var Peer = (function () {
                                 var accessToken = Math.random().toString(36).replace('0.', '');
 
                                //Accept friend request
-                                $.post("https://" + messageBody + ".ngrok.io/peers/request/accept/friend/" + friend + "/accessToken/" + accessToken, function (result) {
+                                $.post("https://" + messageBody + ".local.lt/peers/request/accept/friend/" + friend + "/accessToken/" + accessToken, function (result) {
 
                                     $('#request-new' + index).remove();
                                     var requestcount = $('#request-count').text().replace('Requests - ', '');

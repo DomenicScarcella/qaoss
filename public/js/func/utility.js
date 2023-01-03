@@ -421,7 +421,7 @@ module.exports = {
         return content;
     },
 
-    getShares: function (res, alias, request, ngrok_url, group) {
+    getShares: function (res, alias, request, subdomain, group) {
 
         //Get the content index.
         //If it's -1 then it's empty, if it's -2 then the file doesn't exist
@@ -463,7 +463,7 @@ module.exports = {
                     var content = JSON.stringify(contentJson);
                     module.exports.writeFile('content.json', content, 'utf8');
                     
-                    core.getRequest(res, core.getContent(), module.exports.checkNewMessage(), module.exports.checkNewRequest(), alias, request, ngrok_url, group);
+                    core.getRequest(res, core.getContent(), module.exports.checkNewMessage(), module.exports.checkNewRequest(), alias, request, subdomain, group);
                     return 1;
 
                 }
@@ -503,7 +503,7 @@ module.exports = {
                     module.exports.writeFile('content.json', content, 'utf8');
                    
                     //Load the local timeline.
-                    core.getRequest(res, core.getContent(), module.exports.checkNewMessage(), module.exports.checkNewRequest(), alias, request, ngrok_url, group);
+                    core.getRequest(res, core.getContent(), module.exports.checkNewMessage(), module.exports.checkNewRequest(), alias, request, subdomain, group);
 
                     return 1;
 

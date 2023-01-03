@@ -102,7 +102,7 @@ app.use(function (err, req, res, next) {
 
         });
 
-        //const publicEndpoint = await ngrok.connect({ port: config.port, subdomain: config.ngrok_url, inspect: false });
+        //const publicEndpoint = await ngrok.connect({ port: config.port, subdomain: config.subdomain, inspect: false });
         //console.log(publicEndpoint);
 
         //verify integrity of the index at start up

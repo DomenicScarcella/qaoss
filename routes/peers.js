@@ -15,12 +15,14 @@ const util = require('../public/js/func/utility.js');
 //QAuth athentication middleware
 const qauth = require('../public/js/func/qauth');
 
+//constants
+var protocol = 'https://';
+var domain = '.loca.lt'
+
 
 /* Register new friend locally */
 router.post('/request/:request/alias/:alias/group/:group', qauth.QAuthMiddleware, function (req, res) {
 
-    var protocol = 'https://';
-    var domain = '.ngrok.io';
     var url = protocol + req.params.request + domain;
     let authToken = Math.random().toString(36).replace('0.', '');
     var isFriend = false;
@@ -70,8 +72,6 @@ router.post('/request/:request/alias/:alias/group/:group', qauth.QAuthMiddleware
 /* Edit friend */
 router.post('/request/:request/alias/:alias/group/:group/index/:index', qauth.QAuthMiddleware, function (req, res) {
 
-    const protocol = 'https://';
-    const domain = '.ngrok.io';
     let url = protocol + req.params.request + domain;
     let index = req.params.index;
     let peers;
@@ -95,8 +95,6 @@ router.post('/request/:request/alias/:alias/group/:group/index/:index', qauth.QA
 /* Register new friend from friend request */
 router.post('/request/accept/friend/:friend/authToken/:authToken/accessToken/:accessToken/group/:group/message/:message', qauth.QAuthMiddleware, function (req, res) {
 
-    var protocol = 'https://';
-    var domain = '.ngrok.io';
     var url = protocol + req.params.friend + domain;
     let peers;
 

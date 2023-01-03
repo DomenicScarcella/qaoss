@@ -173,21 +173,21 @@ module.exports = {
             // request: nogrok url of the requesting client from config.json
                 res.header("Access-Control-Allow-Origin", "*");
                 res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-                res.render('Framework', { 'url': config.ngrok_url, 'alias': config.alias, 'peers': peersJson, 'port': config.port, 'request': config.ngrok_url, 'group': config.group});
+                res.render('Framework', { 'url': config.subdomain, 'alias': config.alias, 'peers': peersJson, 'port': config.port, 'request': config.subdomain, 'group': config.group});
 
             } else {
                 let peers0 = '[{ \"url\": \"users\", \"alias\": \"No Friends\" }]';
                 var peersJson0 = JSON.parse(peers0);
                 res.header("Access-Control-Allow-Origin", "*");
                 res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-                res.render('Framework', { 'url': config.ngrok_url, 'alias': config.alias, 'peers': peersJson0, 'port': config.port, 'group': config.group});
+                res.render('Framework', { 'url': config.subdomain, 'alias': config.alias, 'peers': peersJson0, 'port': config.port, 'group': config.group});
             }
         } else {
             let peers = '[{ \"url\": \"users\", \"alias\": \"No Friends\" }]';
             var peersJson = JSON.parse(peers);
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            res.render('Framework', { 'url': config.ngrok_url, 'alias': config.alias, 'peers': peersJson, 'port': config.port, 'group': config.group});
+            res.render('Framework', { 'url': config.subdomain, 'alias': config.alias, 'peers': peersJson, 'port': config.port, 'group': config.group});
         }
 
 
