@@ -10,6 +10,7 @@ var compression = require('compression');
 var helmet = require('helmet'); //application security
 const cors = require('cors');
 const validator = require('express-validator');
+const localtunnel = require('localtunnel');
 
 var app = express();
 
@@ -90,14 +91,19 @@ app.use(function (err, req, res, next) {
     });
 });
 
-app.listen(process.env.PORT, function () {
+//app.listen(process.env.PORT, function () {
 
-    app.listen(config.port, () => console.log(config.ngrok_url + ` listening to port ${config.port}`));
+    app.listen(config.port, () => console.log(config.subdomain + ` listening to port ${config.port}`));
     
-    (async function () {
+    //(async function () {
 
-        const publicEndpoint = await ngrok.connect({ port: config.port, subdomain: config.ngrok_url, inspect: false });
-        console.log(publicEndpoint);
+        const tunnel = localtunnel(config.port, { subdomain: config.subdomain },(err, tunnel) => {
+            console.log(tunnel);
+
+        });
+
+        //const publicEndpoint = await ngrok.connect({ port: config.port, subdomain: config.ngrok_url, inspect: false });
+        //console.log(publicEndpoint);
 
         //verify integrity of the index at start up
         //check that all content in the index exists, if not then delete from index
@@ -105,8 +111,8 @@ app.listen(process.env.PORT, function () {
 
         /*add logic here*/
 
-    })();
+    //})();
 
     console.log('Liberty and Dignity');
-});
+//});
 
