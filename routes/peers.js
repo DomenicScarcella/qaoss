@@ -58,7 +58,7 @@ router.post('/request/:request/alias/:alias/group/:group', qauth.QAuthMiddleware
 
     } else {
 
-        peers = JSON.parse('[]');
+        peers = [];
         peers.push({ "xurl": req.params.request, "url": url, "group": req.params.group, "alias": req.params.alias, "authToken": authToken, "accessToken": "" });
     }
     
@@ -107,7 +107,7 @@ router.post('/request/accept/friend/:friend/authToken/:authToken/accessToken/:ac
 
     } else {
 
-        peers = JSON.parse('[]');
+        peers = [];
     }
 
     peers.push({ "xurl": req.params.friend, "url": url, "group": req.params.group, "alias": req.params.friend, "authToken": req.params.accessToken, "accessToken": req.params.authToken });
@@ -172,7 +172,7 @@ router.delete('/request/reject/message/:message', qauth.QAuthMiddleware, functio
     }
 
     res.setHeader('Content-Type', 'application/json');
-    res.json(JSON.parse('{\"result\":\"success\"}'));
+    res.json({result: success});
 
 });
 
@@ -189,7 +189,7 @@ router.post('/request/accept/friend/:friend/accessToken/:accessToken', function 
 
     } else {
 
-        peers = JSON.parse('[]');
+        peers = [];
     }
     
     for (var index = 0; index < peers.length; index++) {
@@ -230,7 +230,7 @@ router.post('/origin/:origin/request/:request/authtoken/:authtoken/group/:group'
 
             res.setHeader('Content-Type', 'application/json');
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.json(JSON.parse('{\"result\":\"error\"}'));
+            res.json({result: e});
         }
     } else {
         try {
@@ -250,7 +250,7 @@ router.post('/origin/:origin/request/:request/authtoken/:authtoken/group/:group'
 
             res.setHeader('Content-Type', 'application/json');
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.json(JSON.parse('{\"result\":\"error\"}'));
+            res.json({result: e});
         }
     }
 
@@ -266,12 +266,12 @@ router.post('/origin/:origin/request/:request/authtoken/:authtoken/group/:group'
 
             res.setHeader('Content-Type', 'application/json');
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.json(JSON.parse('{\"result\":\"error\"}'));
+            res.json({result:error});
         }
 
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Access-Control-Allow-Origin', '*');
-        res.json(JSON.parse('{\"result\":\"success\",\"status\":\"200\"}'));
+        res.json({result:'success',status:200});
 
     } else {
 
@@ -284,12 +284,12 @@ router.post('/origin/:origin/request/:request/authtoken/:authtoken/group/:group'
 
             res.setHeader('Content-Type', 'application/json');
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.json(JSON.parse('{\"result\":\"error\"}'));
+            res.json({ result: e });
         }
 
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Access-Control-Allow-Origin', '*');
-        res.json(JSON.parse('{\"result\":\"success\",\"status\":\"200\"}'));
+        res.json({ result: 'success', status: 200 });
 
     }
 
@@ -355,7 +355,7 @@ router.delete('/alias/:alias', qauth.QAuthMiddleware, function (req, res) {
                 fs.writeFileSync('peers.json', peers, 'utf8');
 
                 res.setHeader('Content-Type', 'application/json');
-                res.json(JSON.parse('{\"result\":\"success\"}'));
+                res.json({result:'success'});
 
                 break;
 

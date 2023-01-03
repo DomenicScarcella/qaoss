@@ -98,7 +98,7 @@ app.use(function (err, req, res, next) {
     //(async function () {
 
         const tunnel = localtunnel(config.port, { subdomain: config.subdomain },(err, tunnel) => {
-            console.log(tunnel);
+            
 
         });
 

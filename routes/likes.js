@@ -55,7 +55,7 @@ router.post('/post/:post/alias/:alias/request/:request', qauth.QAuthMiddleware, 
 
                     res.setHeader('Content-Type', 'application/json');
                     res.setHeader('Access-Control-Allow-Origin', '*');
-                    res.json(JSON.parse('{\"likes\":' + likes + ',\"crement\":' + crement + '}'));
+                    res.json({likes: likes, crement: crement});
 
                 } else {
                     //User has liked it so decrement his like
@@ -69,7 +69,7 @@ router.post('/post/:post/alias/:alias/request/:request', qauth.QAuthMiddleware, 
 
                     res.setHeader('Content-Type', 'application/json');
                     res.setHeader('Access-Control-Allow-Origin', '*');
-                    res.json(JSON.parse('{\"likes\":' + likes + ',\"crement\":' + crement + '}'));
+                    res.json({ likes: likes, crement: crement });
                 }
 
 
@@ -86,7 +86,7 @@ router.post('/post/:post/alias/:alias/request/:request', qauth.QAuthMiddleware, 
 
                 res.setHeader('Content-Type', 'application/json');
                 res.setHeader('Access-Control-Allow-Origin', '*');
-                res.json(JSON.parse('{\"likes\":' + likes + ',\"crement\":' + crement + '}'));
+                res.json({ likes: likes, crement: crement });
             }
 
 

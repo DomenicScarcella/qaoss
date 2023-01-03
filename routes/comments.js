@@ -61,7 +61,7 @@ router.post('/post/:post/comment/:comment/alias/:alias/request/:request', qauth.
       
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Access-Control-Allow-Origin', '*');
-        res.json(JSON.parse(JSON.stringify(resObj)));
+        res.json(resObj);
     
 });
 
@@ -100,16 +100,13 @@ router.post('/post/:post/comment/:comment/index/:index/request/:request', qauth.
 
                         "result": result,
                         "comment": req.params.comment,
-                        "xurl": req.params.request,
-                        "count": count,
-                        "index": index,
-                        "name": name
+                        "user": req.params.request
 
                     };
 
                     res.setHeader('Content-Type', 'application/json');
                     res.setHeader('Access-Control-Allow-Origin', '*');
-                    res.json(JSON.parse('{\"result\":\"' + result + '\",\"user\":\"' + xurl + '\",\"comment\":' + comment + '}'));
+                    res.json(resObj);
 
                     break;
 
@@ -164,7 +161,7 @@ router.delete('/post/:post/index/:index/request/:request', qauth.QAuthMiddleware
 
                     res.setHeader('Content-Type', 'application/json');
                     res.setHeader('Access-Control-Allow-Origin', '*');
-                    res.json(JSON.parse('{\"result\":\"success\"}'));
+                    res.json({result:'success'});
 
                     break;
                 } else {
@@ -172,7 +169,7 @@ router.delete('/post/:post/index/:index/request/:request', qauth.QAuthMiddleware
 
                     res.setHeader('Content-Type', 'application/json');
                     res.setHeader('Access-Control-Allow-Origin', '*');
-                    res.json(JSON.parse('{\"result\":' + error_code + '}'));
+                    res.json({result: error_code});
                 }
 
             }
@@ -220,10 +217,11 @@ router.post('/reply/:post/comment/:comment/index/:index/request/:request', qauth
        
         content = JSON.stringify(content);
         fs.writeFileSync("./archives/" + folder + "/" + req.params.post, content, 'utf8');
+        
 
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Access-Control-Allow-Origin', '*');
-        res.json(JSON.parse('{\"result\":\"' + result + '\", \"reply\":' + reply + ',\"xurl\":\"' + req.params.request + '\",\"count\":\"' + count + '\",\"comment\":\"' + req.params.index + '\",\"index\":\"' + index + '\",\"name\":\"' + name + '\"}'));
+        res.json({result: result, reply: JSON.parse(reply), xurl : req.params.request, count: count , comment: req.params.index, index: index, name: name});
     
 });
 
@@ -276,7 +274,7 @@ router.post('/post/:post/comment/:comment/commentindex/:commentindex/replyindex/
 
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.json(JSON.parse('{\"result\":\"' + result + '\",\"reply\":' + reply + ',\"user\":\"' + user + '\"}'));
+    res.json({ result: result, reply: JSON.parse(reply), user: user});
 
 });
 
@@ -320,7 +318,7 @@ router.delete('/post/:post/commentindex/:commentindex/replyindex/:replyindex/id/
 
                     res.setHeader('Content-Type', 'application/json');
                     res.setHeader('Access-Control-Allow-Origin', '*');
-                    res.json(JSON.parse('{\"result\":\"' + result + '\",\"id\":\"' + req.params.id + '\"}'));
+                    res.json({result:result,id: req.params.id});
 
                     break;
 
@@ -335,7 +333,7 @@ router.delete('/post/:post/commentindex/:commentindex/replyindex/:replyindex/id/
 
             res.setHeader('Content-Type', 'application/json');
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.json(JSON.parse('{\"result\":' + error_code + '}'));
+            res.json({result: error_code});
         }
     }
 
