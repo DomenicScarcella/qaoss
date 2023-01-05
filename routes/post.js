@@ -129,7 +129,7 @@ function maxLengthMiddleware(req, res, next) {
    
     if (req.params.body.length > MAX_CONTENT_LENGTH_ACCEPTED) {
         res.setHeader('Content-Type', 'application/json');
-        res.json(JSON.parse('{\"result\":\"Content too big\",\"status\":\"400\"}'));
+        res.json({result:"Content too big",status:400});
     } else {
         next();
     }
