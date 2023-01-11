@@ -17,7 +17,6 @@ logs
 results
 build
 config
-
 node_modules
 archives
 messages
@@ -25,4 +24,3 @@ content.json
 messagequeue.json
 messages.json
 peers.json
-config.json
