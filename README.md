@@ -12,19 +12,22 @@ Qaoss is an Open Source project built out of the passion for individual freedom 
 
 Installation
 
-    Copy the entire qaoss folder and all its contents to a folder on your local computer where you have full access. The "documents" folder works nice.
+    Download the qaoss zip file and unzip all its contents to a folder on your local computer where you have full access. 
+    The "documents" folder works nice.
 
-    Download and run the node-v12.18.2-x64.msi Windows installer https://nodejs.org/en/blog/release/v12.18.2/. Accept all the default settings.
+    Double click the install.bat file and when asked for a domain name, choose something unique to make sure it's not already
+    in use by someone else. This is the qaoss name others will use to connect with you. It can be anything such as:
+    'bobaloo' or 'creampie86', just make it unique enough.
 
-    Test your node installation from the command line: C:\node --version It should show: v12.16.3. Switch to the root qaoss folder and type the command ‘npm install’. This will install all the necessary dependencies and can take a minute or two so be patient.
-
-    On your computer in the config folder under the qaoss folder modify the config.json to use your custom domain. { "port": "3000", "subdomain": “(your custom subdomain name here)” Make sure it’s something unique so it's available and in double quotes }
-
-    Double click the Launch.bat file in the qaoss folder. Your personal social media website should be up and running.
+    *Important* The domain name must be all one word. 
+    
+    When the install completes, double click the Launch.bat file in the qaoss folder. 
+    Your personal Qaoss social media website should be up and running.
 
     Open a browser and type localhost:3000 in the address bar to begin testing.
 
-    Go to your browsers “Settings” and configure “Downloads” to ask where to save each time.
+    Go to your browsers “Settings” and configure “Downloads” to ask where to save each time. When you share someone's post on your timeline
+    download it to (your Qaoss installation folder)\archives\shares.
 
 
 
