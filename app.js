@@ -109,8 +109,6 @@ app.use(function (err, req, res, next) {
         //check that all content in the index exists, if not then delete from index
         //check if all content is in the index, if not then add it.
 
-        /*add logic here*/
-
     //})();
 
     console.log('Liberty and Dignity');

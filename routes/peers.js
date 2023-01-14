@@ -202,6 +202,8 @@ router.post('/request/accept/friend/:friend/accessToken/:accessToken', function 
     
     fs.writeFileSync('peers.json', JSON.stringify(peers), 'utf8');
 
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.setHeader('Content-Type', 'application/json');
     res.json(peers);
 
