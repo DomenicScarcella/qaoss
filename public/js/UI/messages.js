@@ -27,7 +27,7 @@ function sendQueuedMessages() {
                 //Need to go get the tokens for each peer to send with the message.
                 
                 //try to send the queued messages
-                $.post('https://' + request + '.local.lt/messages/body/' + encodeURIComponent(body) + '/request/' + encodeURIComponent(origin), data, function (result) {
+                $.post('https://' + request + '.loca.lt/messages/body/' + encodeURIComponent(body) + '/request/' + encodeURIComponent(origin), data, function (result) {
                     if (result.status == 200)
                         $.post('messages/deletequeued/name/' + name, function () {
                             //Do something here :)

@@ -9,7 +9,7 @@ $(document).ready(function () {
         var content = contentJSON.content;
         var origin = $('#content').attr('origin');
 
-        var url = 'https://' + request + '.local.lt/share/content/' + content + '/request/' + origin;
+        var url = 'https://' + request + '.loca.lt/share/content/' + content + '/request/' + origin;
         var result = window.open(url, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
         if (result === null)    
             alert("Error sharing post");

@@ -21,7 +21,7 @@ $(document).ready(function () {
         if (origin == request)
             url = "/likes/post/" + contentJson.content + "/alias/" + contentJson.alias + "/request/" + contentJson.request;
         else
-            url = "https://" + request + ".local.lt/likes/post/" + contentJson.content + "/alias/" + contentJson.alias + "/request/" + origin;
+            url = "https://" + request + ".loca.lt/likes/post/" + contentJson.content + "/alias/" + contentJson.alias + "/request/" + origin;
 
         //Local requests don't need authentication
         if (typeof data === 'undefined') {

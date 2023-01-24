@@ -49,7 +49,7 @@ function submitCommentReply(id, value, content, index, request, comment) {
 
                 url = "/comments/reply/" + content + "/comment/" + encodeURIComponent(value) + "/index/" + index + "/request/" + encodeURIComponent(origin);
             } else {
-                url = "https://" + request + ".local.lt/comments/reply/" + content + "/comment/" + encodeURIComponent(value) + "/index/" + index + "/request/" + encodeURIComponent(origin);
+                url = "https://" + request + ".loca.lt/comments/reply/" + content + "/comment/" + encodeURIComponent(value) + "/index/" + index + "/request/" + encodeURIComponent(origin);
             }
 
             //Local requests don't need authentication
@@ -139,7 +139,7 @@ function submitCommentReplyEdit(id, value, content, commentIndex, replyIndex, re
             if (origin == request) {
                 url = "/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/commentindex/" + commentIndex + "/replyindex/" + replyIndex + "/request/" + origin;
             } else {
-                url = "https://" + request + ".local.lt/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/commentindex/" + commentIndex + "/replyindex/" + replyIndex + "/request/" + origin;
+                url = "https://" + request + ".loca.lt/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/commentindex/" + commentIndex + "/replyindex/" + replyIndex + "/request/" + origin;
             }
 
             //Local requests don't need authentication
@@ -208,7 +208,7 @@ $(function () {
                         if (origin == request)
                             url = "/comments/post/" + post + "/commentindex/" + commentIndex + "/replyindex/" + replyIndex + "/id/" + id + "/request/" + origin;
                         else
-                            url = "https://" + request + ".local.lt/comments/post/" + post + "/commentindex/" + commentIndex + "/replyindex/" + replyIndex + "/id/" + id + "/request/" + origin;
+                            url = "https://" + request + ".loca.lt/comments/post/" + post + "/commentindex/" + commentIndex + "/replyindex/" + replyIndex + "/id/" + id + "/request/" + origin;
 
                         //Local requests don't need authentication
                         if (typeof data === 'undefined') {
@@ -282,7 +282,7 @@ function submitComment(id, value, content, alias, request, count) {
             if (origin == request) {
                 url = "/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/alias/" + encodeURIComponent(alias) + "/request/" + encodeURIComponent(origin);
             } else {
-                url = "https://" + request + ".local.lt/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/alias/" + encodeURIComponent(alias) + "/request/" + encodeURIComponent(origin);
+                url = "https://" + request + ".loca.lt/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/alias/" + encodeURIComponent(alias) + "/request/" + encodeURIComponent(origin);
             }
 
             //Local requests don't need authentication
@@ -351,7 +351,7 @@ function submitCommentEdit(id, value, content, index, request) {
             if (origin == request) {
                 url = "/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/index/" + index + "/request/" + origin;
             } else {
-                url = "https://" + request + ".local.lt/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/index/" + index + "/request/" + origin;
+                url = "https://" + request + ".loca.lt/comments/post/" + content + "/comment/" + encodeURIComponent(value) + "/index/" + index + "/request/" + origin;
             }
 
             //Local requests don't need authentication
@@ -435,7 +435,7 @@ $(function () {
                         if (origin == request)
                             url = "/comments/post/" + post + "/index/" + index + "/request/" + origin;
                         else
-                            url = "https://" + request + ".local.lt/comments/post/" + post + "/index/" + index + "/request/" + origin;
+                            url = "https://" + request + ".loca.lt/comments/post/" + post + "/index/" + index + "/request/" + origin;
 
                         //Local requests don't need authentication
                         if (typeof data === 'undefined') {

@@ -181,7 +181,7 @@ function htmlEdits(group, origin, xurl, index, name, local, body) {
 }
 function htmlAddPeer(id, index, request, alias, group, origin, authToken, accessToken ) {
 
-    return "<li id=" + id + "><a href=https://" + request + ".local.lt/remote/?alias=" + alias + "&origin=" + origin + "&request=" + request + "&authToken=" + authToken + "&accessToken=" + accessToken + " alias=" + alias + " remote=https://" + request + ".local.lt group=" + group + " id=peer" + index + ">" + alias + "</a>" +
+    return "<li id=" + id + "><a href=https://" + request + ".loca.lt/remote/?alias=" + alias + "&origin=" + origin + "&request=" + request + "&authToken=" + authToken + "&accessToken=" + accessToken + " alias=" + alias + " remote=https://" + request + ".loca.lt group=" + group + " id=peer" + index + ">" + alias + "</a>" +
         "<span>(" + request + ")</span>" +
         "<span class=context-menu-three id=context-menu-" + index + " value={\"peer\":\"" + request + "\",\"alias\":\"" + alias + "\",\"group\":\"" + group + "\",\"index\":\"" + index + "\",\"request\":\"" + origin + "\",\"authToken\":\"" + authToken + "\",\"accessToken\":\"" + accessToken + "\"} title=Manage Friend><i class='fas fa-ellipsis-h'></i></span><span class=message-form id=message-form" + index + " style=display:none title=Create Message><div class=grid-container-dialog><div><textarea class=textarea-create-post data-autoresize rows=1 style=border: none name=message-body" + index + " id=message-body" + index + "></textarea></div></div></span></li>";
 

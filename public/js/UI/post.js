@@ -266,7 +266,7 @@ function doEditDialog(elem, index, content, url, origin, request) {
                     if (origin == request) {
                         url = "/post/photo/post/" + content.name + '/request/' + origin + '/authToken/null/accessToken/null';
                     } else {
-                        url = "https://" + request + ".local.lt/post/photo/post/" + content.name + '/request/' + origin + '/authToken/' + data.authToken + '/accessToken/' + data.accessToken;
+                        url = "https://" + request + ".loca.lt/post/photo/post/" + content.name + '/request/' + origin + '/authToken/' + data.authToken + '/accessToken/' + data.accessToken;
                     }
                     if (confirm('Are you sure you want to delete the photo?')) {
                         $('.progress').show();
@@ -359,7 +359,7 @@ function doEditDialog(elem, index, content, url, origin, request) {
                                     if (origin == request) {
                                         $('#previewbody' + index).html(data.content.body + "<br><br><a href=" + data.content.photo + "><img src=" + data.content.photo + '?' + Math.random() + " width=750 height=450></a>");
                                     } else {
-                                        $('#previewbody' + index).html(data.content.body + "<br><br><a href=" + data.content.photo + "><img src=https://" + request + ".local.lt/" + data.content.photo + "?" + Math.random() + " width=750 height=450></a>");
+                                        $('#previewbody' + index).html(data.content.body + "<br><br><a href=" + data.content.photo + "><img src=https://" + request + ".loca.lt/" + data.content.photo + "?" + Math.random() + " width=750 height=450></a>");
 
                                     }
                                 } else {
@@ -403,7 +403,7 @@ function doEditDialog(elem, index, content, url, origin, request) {
             if (origin == request) {
                photo = '<img id="PhotoEdit" src="' + content.photo + '?' + Math.random() + '"/>'
             } else {
-               photo = '<img id=PhotoEdit src=https://' + request + '.local.lt/' + content.photo + '?' + Math.random() + '/>'
+               photo = '<img id=PhotoEdit src=https://' + request + '.loca.lt/' + content.photo + '?' + Math.random() + '/>'
             }
 
             if (content.photo != '') {
@@ -448,9 +448,9 @@ $(function () {
                         });
                     } else {
 
-                        $.get("https://" + request + ".local.lt/post/content/" + post + "/request/" + origin + "/authToken/" + data.authToken + "/accessToken/" + data.accessToken, function (content) {
+                        $.get("https://" + request + ".loca.lt/post/content/" + post + "/request/" + origin + "/authToken/" + data.authToken + "/accessToken/" + data.accessToken, function (content) {
 
-                            url = "https://" + request + ".local.lt/post/post/" + post;
+                            url = "https://" + request + ".loca.lt/post/post/" + post;
 
                             doEditDialog("dialog-form" + target, target, content, url, origin, request);
                         });
@@ -468,7 +468,7 @@ $(function () {
                         if (origin == request) {
                             requestUrl = "/post/post/" + post + "/request/" + origin + "/authToken/null/accessToken/null";
                         } else {
-                            requestUrl = "https://" + request + ".local.lt/post/post/" + post + "/request/" + origin + "/authToken/" + data.authToken + "/accessToken/" + data.accessToken;
+                            requestUrl = "https://" + request + ".loca.lt/post/post/" + post + "/request/" + origin + "/authToken/" + data.authToken + "/accessToken/" + data.accessToken;
                         }
                         var id = $(this).attr('id');
                         $.ajax({

@@ -43,10 +43,10 @@ $(document).ready(function () {
 
                     index = 2;
 
-                    url = "https://" + request + ".local.lt/feed/index/";
+                    url = "https://" + request + ".loca.lt/feed/index/";
                 } else {
 
-                    url = "https://" + request + ".local.lt/feed/index/";
+                    url = "https://" + request + ".loca.lt/feed/index/";
                 }
 
                 
@@ -71,7 +71,7 @@ $(document).ready(function () {
                     if (photo != "" && (origin == request))
                         body = content[0].body + "<br><br><a href=" + photo + "><img src=" + photo + " width=750 height=450></a>";
                     else if (photo != "" && (origin != request))
-                        body = content[0].body + "<br><br><a href=https://" + request + ".local.lt/" + photo + "><img src=https://" + request + ".local.lt/" + photo + " width=750 height=450></a>";
+                        body = content[0].body + "<br><br><a href=https://" + request + ".loca.lt/" + photo + "><img src=https://" + request + ".loca.lt/" + photo + " width=750 height=450></a>";
                     else
                         body = content[0].body;
 
