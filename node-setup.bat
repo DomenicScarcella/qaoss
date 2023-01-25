@@ -1,3 +1,5 @@
+echo.
+echo.
 ECHO Checking Windows OS architecture...
 
 ECHO %PROCESSOR_ARCHITECTURE%  | findstr /i ".64." > nul
