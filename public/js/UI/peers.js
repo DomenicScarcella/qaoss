@@ -199,7 +199,11 @@ var Peer = (function () {
                                             if (body == "") {
                                                 alert("The body of the message cannot be empty");
                                             } else {
-                                                
+                                                $.ajaxSetup({
+                                                    headers: {
+                                                        'Bypass-Tunnel-Reminder': 'true'
+                                                    }
+                                                });
                                                 $.post('https://' + peer + '.loca.lt/messages/body/' + encodeURIComponent(body) + '/request/' + encodeURIComponent(request), data, function (result) {
                                                     if (result.status == 200)
                                                         alert("Message sent to: " + peer);
@@ -332,8 +336,12 @@ var Peer = (function () {
                             alert('Domain name cannot be empty');
                         else {
 
-                           //Need to check if the new peer is online. If not then queue the request
-                            
+                               //Need to check if the new peer is online. If not then queue the request
+                                $.ajaxSetup({
+                                    headers: {
+                                        'Bypass-Tunnel-Reminder': 'true'
+                                    }
+                                });
                                 $.post('peers/request/' + request + '/alias/' + alias + '/group/' + group, function (result) {
 
                                     //Check if this friend already exists in the list
@@ -432,7 +440,11 @@ var Peer = (function () {
 
                                 //Generate access token for requester
                                 var accessToken = Math.random().toString(36).replace('0.', '');
-
+                                $.ajaxSetup({
+                                    headers: {
+                                        'Bypass-Tunnel-Reminder': 'true'
+                                    }
+                                });
                                //Accept friend request
                                 $.post("https://" + messageBody + ".loca.lt/peers/request/accept/friend/" + friend + "/accessToken/" + accessToken, function (result) {
 

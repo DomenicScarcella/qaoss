@@ -16,7 +16,7 @@ pids
 logs
 results
 build
-config
+config/config.json
 node_modules
 archives
 messages

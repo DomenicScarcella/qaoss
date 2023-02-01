@@ -204,7 +204,7 @@ router.post('/request/accept/friend/:friend/accessToken/:accessToken', function 
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.setHeader('Content-Type', 'application/json');
+    res.header('Content-Type', 'application/json');
     res.json(peers);
 
 });
@@ -311,7 +311,7 @@ router.get('/requests', qauth.QAuthMiddleware, function (req, res, next) {
 
         //Error handling here
         res.setHeader('Content-Type', 'application/json');
-        res.json(JSON.parse('{\"messages\":[' + messages + ']}'));
+        res.json({messages:messages});
 
     } else {
         for (var index = 0; index < messagesJson.length; index++) {
@@ -325,7 +325,7 @@ router.get('/requests', qauth.QAuthMiddleware, function (req, res, next) {
         }
 
         res.setHeader('Content-Type', 'application/json');
-        res.json(JSON.parse('{\"messages\":[' + messages + ']}'));
+        res.json({messages:messages});
     }
 });
 
