@@ -33,15 +33,19 @@ $(document).ready(function () {
         data = { authToken: authToken, accessToken: accessToken };
 
         //Check remote server availability
-        let img = document.body.appendChild(document.createElement("img"));
-        img.src = remote + '/images/profile.jpg';
+        //let img = document.body.appendChild(document.createElement("img"));
+        //img.src = remote + '/images/profile.jpg';
         
-        img.onerror = function () {
-            alert(alias + ' is currently offline');
-        };
+        //img.onerror = function () {
+        //    alert(alias + ' is currently offline');
+        //};
         
         var origin = $('#content').attr('origin');
-       
+        $.ajaxSetup({
+            headers: {
+                'Bypass-Tunnel-Reminder': 'true'
+            }
+        });
         //Get the remote timeline
         $.get(url, function (content) {
 
