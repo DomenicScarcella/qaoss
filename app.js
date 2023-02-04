@@ -1,5 +1,5 @@
 'use strict';
-
+var debug = require('debug')('my express app');
 var express = require('express');
 var session = require('express-session');
 var path = require('path');
@@ -92,16 +92,21 @@ app.use(function (err, req, res, next) {
 });
 
 //app.listen(process.env.PORT, function () {
+app.set('port', process.env.PORT || config.port);
+var server = app.listen(app.get('port'), () => {
+    console.log(config.subdomain + ` listening to port ` + app.get('port'))
+    debug('Express server listening on port ' + server.address().port);
+    console.log('Liberty and Dignity');
 
-    app.listen(config.port, () => console.log(config.subdomain + ` listening to port ${config.port}`));
+    const tunnel = localtunnel(config.port, { subdomain: config.subdomain }, (err, tunnel) => {
+
+
+    });
+});
     
     //(async function () {
 
-     const tunnel = localtunnel(config.port, { subdomain: config.subdomain }, (err, tunnel) => {
-            
-            
-
-        });
+     
 
         //const publicEndpoint = await ngrok.connect({ port: config.port, subdomain: config.subdomain, inspect: false });
         //console.log(publicEndpoint);
@@ -112,6 +117,6 @@ app.use(function (err, req, res, next) {
 
     //})();
 
-    console.log('Liberty and Dignity');
+    
 //});
 

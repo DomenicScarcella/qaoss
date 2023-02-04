@@ -319,13 +319,17 @@ router.get('/requests', qauth.QAuthMiddleware, function (req, res, next) {
             message = fs.readFileSync(process.cwd() + '/messages/' + messagesJson[index].folder + '/' + messagesJson[index].content, 'utf8');
 
             if (JSON.parse(message).preview.read == 2) {
-                messages[count] = message;
+                messages[count] = JSON.parse(message);
                 count++;
+            }
+
+            if (index == messagesJson.length - 1) {
+                
+                res.json({ messages: messages });
             }
         }
 
-        res.setHeader('Content-Type', 'application/json');
-        res.json({messages:messages});
+        
     }
 });
 

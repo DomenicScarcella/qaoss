@@ -2,6 +2,7 @@ bin
 obj
 .vs
 .vscode
+Qaoss*
 
 lib-cov
 *.seed
