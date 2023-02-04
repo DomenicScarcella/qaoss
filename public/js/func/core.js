@@ -198,6 +198,8 @@ module.exports = {
        
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Access-Control-Allow-Origin', '*');
+
+        console.log(message + " " + friend)
        
         res.json({contents: contents,message: message, friend: friend,port: config.port, alias: alias,request: request,local: local,group: group});
         

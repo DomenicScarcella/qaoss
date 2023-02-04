@@ -297,7 +297,7 @@ module.exports = {
         var messagesJson = module.exports.getMessageIndex();
         if (messagesJson < 0) {
 
-            //Error handling here
+            return 0; //No messages yet
             
 
         } else {
@@ -319,7 +319,7 @@ module.exports = {
         var messagesJson = module.exports.getMessageIndex();
         if (messagesJson < 0) {
 
-            //Error handling here
+            return 0; //No messages yet
 
 
         } else {

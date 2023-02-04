@@ -58,7 +58,7 @@ function metaDataCheck(parsedObj) {
                                                     likesPropArray.forEach(function (prop) {
                                                         if (like.hasOwnProperty(prop)) {
                                                             if (typeof like[prop] !== 'string') {
-                                                                alert('The requested data is missing the ' + prop + ' porperty. Error Code 5');
+                                                                alert('The requested data is missing the ' + prop + ' property. Error Code 5');
                                                                 result = -1;
                                                             }
                                                         }
@@ -99,7 +99,7 @@ function metaDataCheck(parsedObj) {
                                                                                         result = -1;
                                                                                     }
                                                                                 } else {
-                                                                                    alert('Replies array is missing the ' + prop + ' porperty. Error Code 8');
+                                                                                    alert('Replies array is missing the ' + prop + ' property. Error Code 8');
                                                                                     result = -1;
                                                                                 }
                                                                             });
@@ -111,7 +111,7 @@ function metaDataCheck(parsedObj) {
                                                                 }
                                                             }
                                                         } else {
-                                                            alert('The requested data is missing the ' + prop + ' porperty. Error Code 6');
+                                                            alert('The requested data is missing the ' + prop + ' property. Error Code 6');
                                                             result = -1;
                                                         }
                                                     });
@@ -143,7 +143,7 @@ function metaDataCheck(parsedObj) {
 
                                 } else {
 
-                                    alert('The requested data is missing the ' + prop + ' porperty. Error Code 2');
+                                    alert('The requested data is missing the ' + prop + ' property. Error Code 2');
                                     result = -1;
                                 }
                             });
@@ -160,7 +160,7 @@ function metaDataCheck(parsedObj) {
 
                 }
             } else {
-                alert('The requested data is missing the ' + prop + 'porperty. Error Code 1');
+                alert('The requested data is missing the ' + prop + ' property. Error Code 1');
                 result = -1;
             }
         });
