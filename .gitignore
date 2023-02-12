@@ -21,7 +21,6 @@ config/config.json
 profile.jpg
 node_modules
 messages
-content.json
 messagequeue.json
 messages.json
 peers.json
