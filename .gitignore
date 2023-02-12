@@ -20,7 +20,6 @@ build
 config/config.json
 profile.jpg
 node_modules
-archives
 messages
 content.json
 messagequeue.json
