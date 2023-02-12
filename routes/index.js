@@ -48,7 +48,7 @@ router.get('/local', qauth.QAuthMiddleware, function (req, res) {
 
 /* GET remote request. */
 router.get('/remote', qauth.QAuthMiddleware, function (req, res) {
-
+    console.log(req.socket.remoteAddress);
      
         //Update the content index if there are have been any shares
         //Load the local timeline from this function because javascript is asynchronous and we have to make sure
@@ -59,7 +59,7 @@ router.get('/remote', qauth.QAuthMiddleware, function (req, res) {
 
 /* Load the client framework */
 router.get('/', qauth.QAuthMiddleware, function (req, res) {
-
+    console.log(req.socket.remoteAddress);
     //Load the main framework
     core.loadMain(res);
                   

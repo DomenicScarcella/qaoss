@@ -187,6 +187,7 @@ var Peer = (function () {
 
                                             //Check remote server availability
                                             var img = document.body.appendChild(document.createElement("img"));
+
                                             img.src = 'https://' + peer + '.loca.lt/images/profile.jpg';
                                            
                                             img.onerror = function () {
@@ -337,11 +338,7 @@ var Peer = (function () {
                         else {
 
                                //Need to check if the new peer is online. If not then queue the request
-                                $.ajaxSetup({
-                                    headers: {
-                                        'Bypass-Tunnel-Reminder': 'true'
-                                    }
-                                });
+                               //Add a get to the remote peer here to check if he's online
                                 $.post('peers/request/' + request + '/alias/' + alias + '/group/' + group, function (result) {
 
                                     //Check if this friend already exists in the list
@@ -376,6 +373,11 @@ var Peer = (function () {
                                         }
 
                                         //if successful, then send the authToken to the new friend.
+                                        $.ajaxSetup({
+                                            headers: {
+                                                'Bypass-Tunnel-Reminder': 'true'
+                                            }
+                                        });
                                         $.post(result[index].url + '/peers/origin/' + origin + "/request/" + request + "/authToken/" + result[index].authToken + "/group/" + requestgroup, function (result) {
 
                                             alert('Friend Request Sent to ' + request);

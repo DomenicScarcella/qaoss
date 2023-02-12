@@ -63,8 +63,7 @@ router.post('/request/:request/alias/:alias/group/:group', qauth.QAuthMiddleware
     }
     
     fs.writeFileSync('peers.json', JSON.stringify(peers), 'utf8');
-
-    res.setHeader('Content-Type', 'application/json');       
+    
     res.json(peers);
 
 });
@@ -310,7 +309,6 @@ router.get('/requests', qauth.QAuthMiddleware, function (req, res, next) {
     if (messagesJson < 0) {
 
         //Error handling here
-        res.setHeader('Content-Type', 'application/json');
         res.json({messages:messages});
 
     } else {

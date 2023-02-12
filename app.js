@@ -27,6 +27,7 @@ var messages = require('./routes/messages');
 
 const ngrok = require('ngrok');
 const fs = require('fs').promises;
+const domain = "https://qaoss.eu.ngrok.io";
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -91,32 +92,26 @@ app.use(function (err, req, res, next) {
     });
 });
 
-//app.listen(process.env.PORT, function () {
-app.set('port', process.env.PORT || config.port);
-var server = app.listen(app.get('port'), () => {
-    console.log(config.subdomain + ` listening to port ` + app.get('port'))
-    debug('Express server listening on port ' + server.address().port);
+(async function () {
+
+    const tunnel = await localtunnel(config.port, { domain: domain, subdomain: config.subdomain });
+
+    app.listen(config.port, () => console.log(tunnel.url + ` listening to port ${config.port}`));
+
     console.log('Liberty and Dignity');
 
-    const tunnel = localtunnel(config.port, { subdomain: config.subdomain }, (err, tunnel) => {
+})();
 
 
-    });
-});
-    
-    //(async function () {
 
-     
 
-        //const publicEndpoint = await ngrok.connect({ port: config.port, subdomain: config.subdomain, inspect: false });
-        //console.log(publicEndpoint);
 
-        //verify integrity of the index at start up
-        //check that all content in the index exists, if not then delete from index
-        //check if all content is in the index, if not then add it.
+//const publicEndpoint = await ngrok.connect({ port: config.port, subdomain: config.subdomain, inspect: false });
+//console.log(publicEndpoint);
 
-    //})();
+//verify integrity of the index at start up
+//check that all content in the index exists, if not then delete from index
+//check if all content is in the index, if not then add it.
 
-    
-//});
+//})();
 
