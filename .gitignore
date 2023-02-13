@@ -1,5 +1,6 @@
 bin
 obj
+archives/*
 .vs
 .vscode
 Qaoss*
@@ -18,6 +19,7 @@ logs
 results
 build
 config/config.json
+content.json
 profile.jpg
 node_modules
 messages

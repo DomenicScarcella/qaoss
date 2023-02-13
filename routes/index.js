@@ -59,7 +59,7 @@ router.get('/remote', qauth.QAuthMiddleware, function (req, res) {
 
 /* Load the client framework */
 router.get('/', qauth.QAuthMiddleware, function (req, res) {
-    console.log(req.socket.remoteAddress);
+    
     //Load the main framework
     core.loadMain(res);
                   

@@ -224,12 +224,13 @@ module.exports = {
     getContentIndex: function () {
 
         if (fs.existsSync(process.cwd() + '/content.json')) {
-            let contents = fs.readFileSync(process.cwd() + '/content.json', 'utf8');
+            let contents = JSON.parse(fs.readFileSync(process.cwd() + '/content.json', 'utf8'));
 
-            if (contents == '[]') {
+            if (contents.length == 0) {
                 return -1;
             } else {
-                return JSON.parse(contents);
+               
+                return contents;
             }
         } else
             return -2;
