@@ -12,22 +12,24 @@ Qaoss is an Open Source project built out of the passion for individual freedom 
 
 Installation
 
-    Download the qaoss zip file and unzip all its contents to a folder on your local computer where you have full access. 
-    The "documents" folder works nice.
+Download the qaoss zip file and unzip all its contents to a folder on your local computer where you have full access. 
+The "documents" folder works nice.
 
-    Double click the install.bat file and when asked for a domain name, choose something unique to make sure it's not already
-    in use by someone else. This is the qaoss name others will use to connect with you. It can be anything such as:
-    'bobaloo' or 'creampie86', just make it unique enough.
+Double click the install.bat file and when asked for a qaoss name, choose something unique to make sure it's not already
+in use by someone else. This is the qaoss name others will use to connect with you. It can be anything such as:
+'bobaloo' or 'creampie86', just make it unique enough.
 
-    *Important* The domain name must be all one word. 
-    
-    When the install completes, double click the Launch.bat file in the qaoss folder. 
-    Your personal Qaoss social media website should be up and running.
+**********************************************************
+*Important* The qaoss name must be all one word. *********
+**********************************************************
 
-    Open a browser and type localhost:3000 in the address bar to begin testing.
+When the install completes, double click the Launch.bat file in the qaoss folder. 
+Your personal Qaoss social media website should be up and running.
 
-    Go to your browsers “Settings” and configure “Downloads” to ask where to save each time. When you share someone's post on your timeline
-    download it to (your Qaoss installation folder)\archives\shares.
+Open a browser and type localhost:3000 in the address bar to begin testing.
+
+Go to your browsers “Settings” and configure “Downloads” to ask where to save each time. When you share someone's post on your timeline
+download it to (your Qaoss installation folder)\archives\shares.
 
 
 
