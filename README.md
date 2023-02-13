@@ -20,7 +20,7 @@ in use by someone else. This is the qaoss name others will use to connect with y
 'bobaloo' or 'creampie86', just make it unique enough.
 
 **********************************************************
-*Important* The qaoss name must be all one word. *********
+*Important* The qaoss name must be all one word. 
 **********************************************************
 
 When the install completes, double click the Launch.bat file in the qaoss folder. 
